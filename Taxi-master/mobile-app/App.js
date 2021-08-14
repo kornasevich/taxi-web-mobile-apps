@@ -104,7 +104,7 @@ export default function App() {
           <Text style={{ paddingBottom: 100 }}>{updateMsg}</Text>
         </ImageBackground>
       </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

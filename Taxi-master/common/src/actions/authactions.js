@@ -212,7 +212,7 @@ export const emailSignUp = (regData) => async (firebase) => {
   } = firebase;
   let createDate = new Date();
   regData.createdAt = createDate.toISOString();
-  if (regData.usertype == 'driver') {
+  if (regData.usertype === 'driver') {
     let timestamp = createDate.getTime();
     await driverDocsRef(timestamp).put(regData.licenseImage);
     regData.licenseImage = await driverDocsRef(timestamp).getDownloadURL();
@@ -223,7 +223,7 @@ export const emailSignUp = (regData) => async (firebase) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ regData: regData })
-  })
+  });
   return await response.json();
 };
 

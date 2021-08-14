@@ -51,10 +51,10 @@ export default function AppCommon({ children }) {
   const [sound, setSound] = useState();
 
   useEffect(() => {
-    if (auth.info && auth.info.profile && auth.info.profile.usertype == 'driver' && tasks && tasks.length > 0) {
+    if (auth.info && auth.info.profile && auth.info.profile.usertype === 'driver' && tasks && tasks.length > 0) {
       playSound();
     }
-    if (auth.info && auth.info.profile && auth.info.profile.usertype == 'driver' && (!tasks || tasks.length == 0)) {
+    if (auth.info && auth.info.profile && auth.info.profile.usertype === 'driver' && (!tasks || tasks.length === 0)) {
       stopPlaying();
     }
   }, [auth.info,tasks]);
@@ -105,8 +105,8 @@ export default function AppCommon({ children }) {
           lng: gps.location.lng
         });
       }
-      if (activeBooking && auth.info.profile.usertype == 'driver') {
-        if (lastLocation && (activeBooking.status == 'ACCEPTED' || activeBooking.status == 'STARTED')) {
+      if (activeBooking && auth.info.profile.usertype === 'driver') {
+        if (lastLocation && (activeBooking.status === 'ACCEPTED' || activeBooking.status === 'STARTED')) {
           let diff = api.GetDistance(lastLocation.lat, lastLocation.lng, gps.location.lat, gps.location.lng);
           if (diff > 0.010) {
             api.saveTracking(activeBooking.id, {

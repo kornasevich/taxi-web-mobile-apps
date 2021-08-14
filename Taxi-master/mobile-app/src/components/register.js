@@ -116,10 +116,10 @@ export default function Registration(props) {
 
     validateMobile = () => {
         let mobileValid = true;
-        if(mobileWithoutCountry.length<6){
-            mobileValid = false;
-            Alert.alert(language.alert,language.mobile_no_blank_error);
-        }
+        // if(mobileWithoutCountry.length<6){
+        //     mobileValid = false;
+        //     Alert.alert(language.alert,language.mobile_no_blank_error);
+        // }
         return mobileValid;
     }
 
@@ -160,10 +160,10 @@ export default function Registration(props) {
         const { onPressRegister } = props;
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         if(re.test(state.email)){
-            if(state.usertype == 'driver' && state.licenseImage == null){
+            if(state.usertype === 'driver' && state.licenseImage == null){
                 Alert.alert(language.alert,language.proper_input_licenseimage);
             }else{
-                if((state.usertype == 'driver' && state.vehicleNumber.length > 1) || state.usertype == 'rider'){
+                if((state.usertype === 'driver' && state.vehicleNumber.length > 1) || state.usertype == 'rider'){
                     if(state.firstName.length>0 && state.lastName.length >0){
                         if(validatePassword('alphanumeric')){
                             if(validateMobile()){
@@ -405,7 +405,7 @@ export default function Registration(props) {
                                 }}
                             />
                         </View>
-                        {state.usertype == 'driver' ? 
+                        {state.usertype == 'driver' ?
                         <View style={[styles.textInputContainerStyle,{marginTop:10,marginBottom:10}]}>
                             <Icon
                                 name='car'
