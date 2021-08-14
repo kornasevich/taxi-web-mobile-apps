@@ -344,7 +344,7 @@ export default function LandingPage(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      <AlertDialog open={bookingdata.booking ? true : false} onClose={handleBookingAlertClose}>{bookingdata.booking ? language.booking_success + bookingdata.booking.booking_id : null}</AlertDialog>
+      <AlertDialog open={!!bookingdata.booking} onClose={handleBookingAlertClose}>{bookingdata.booking ? language.booking_success + bookingdata.booking.booking_id : null}</AlertDialog>
       <AlertDialog open={bookingdata.error.flag} onClose={handleBookingErrorClose}>{bookingdata.error.msg}</AlertDialog>
       <AlertDialog open={estimatedata.error.flag} onClose={handleEstimateErrorClose}>{estimatedata.error.msg}</AlertDialog>
       <AlertDialog open={commonAlert.open} onClose={handleCommonAlertClose}>{commonAlert.msg}</AlertDialog>

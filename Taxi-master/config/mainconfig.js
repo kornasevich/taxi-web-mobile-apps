@@ -1,8 +1,8 @@
 export const MainConfig = {
     AppDetails: {
-        app_name: "Your App Name", 
-        app_description: "Your App Description Here",
-        app_identifier: "com.something.app",
+        app_name: "Такси 135",
+        app_description: "Такси 135 - быстро и дешево",
+        app_identifier: "com.makrakor.taxi",
         ios_app_version: "1.0.0", 
         android_app_version: 100
     },

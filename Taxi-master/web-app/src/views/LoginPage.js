@@ -347,7 +347,7 @@ export default function LoginPage(props) {
                         }}
                         inputProps={{
                           required: true,
-                          disabled: data.verificationId ? true : false,
+                          disabled: !!data.verificationId,
                           endAdornment: (
                             <InputAdornment position="end">
                               <PhoneIcon className={classes.inputIconsColor} />

@@ -1,6 +1,6 @@
 {
     "expo": {
-      "name": "Taxi 135",
+      "name": "Your App Name",
       "description": "Your App Description Here",
       "slug": "your-app-name",
       "privacy": "public",
@@ -46,14 +46,14 @@
           ]
         },
         "config": {
-          "googleMapsApiKey": "XXXXXXXXXXXXXXXXX"
+          "googleMapsApiKey": "AIzaSyAB7AXZhKSt2K-5r2ffRKRjgzg453FyIjs"
         },
         "googleServicesFile": "./GoogleService-Info.plist",
         "buildNumber": "1.0.0"
       },
       "android": {
-        "package": "com.makrakor.taxi",
-        "versionCode": 0,
+        "package": "com.something.app",
+        "versionCode": 100,
         "permissions": [
           "CAMERA",
           "READ_EXTERNAL_STORAGE",
@@ -67,11 +67,13 @@
         "googleServicesFile": "./google-services.json",
         "config": {
           "googleMaps": {
-            "apiKey": "AIzaSyBUHfu4UsQ2MEgmtOYNOosvIGnL8ne-Swk"
+            "apiKey": "AIzaSyAB7AXZhKSt2K-5r2ffRKRjgzg453FyIjs"
           }
         },
         "useNextNotificationsApi": true
       },
+      "facebookScheme": "fbXXXXXXXXXXXXXXXXX",
+      "facebookAppId": "XXXXXXXXXXXXXXXXX",
       "facebookDisplayName": "Your App Name"
     }
 }
