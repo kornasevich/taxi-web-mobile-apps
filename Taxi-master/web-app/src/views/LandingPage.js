@@ -138,7 +138,7 @@ export default function LandingPage(props) {
       userDetails: auth.info,
       estimate: estimatedata.estimate,
       tripdate: new Date(selectedDate).toString(),
-      bookLater: bookingType==='Book Later'?true:false,
+      bookLater: bookingType === 'Book Later',
       settings:settings,
       booking_type_web: true
     }));
@@ -160,7 +160,7 @@ export default function LandingPage(props) {
     e.preventDefault();
     dispatch(clearBooking());
     dispatch(clearEstimate());
-    props.history.push('/bookings');
+    props.history.push('/panel/bookings');
   };
 
   const handleBookingErrorClose = (e) => {

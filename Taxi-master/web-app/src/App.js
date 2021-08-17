@@ -45,22 +45,22 @@ function App() {
         <AuthLoading>
           <Router history={hist}>
             <Switch>
-              <ProtectedRoute exact component={BookingHistory} path="/bookings" permit={"rider,admin,driver,fleetadmin"} />
-              <ProtectedRoute exact component={MyProfile} path="/profile" permit={"rider,admin,driver,fleetadmin"} />
-              <ProtectedRoute exact component={Dashboard} path="/dashboard" permit={"admin,fleetadmin"} />
-              <ProtectedRoute exact component={CarTypes} path="/cartypes" permit={"admin"} />
-              <ProtectedRoute exact component={CancellationReasons} path="/cancelreasons" permit={"admin"} />
-              <ProtectedRoute exact component={AddBookings} path="/addbookings" permit={"admin"} />
-              <ProtectedRoute exact component={Promos} path="/promos" permit={"admin"} />
-              <ProtectedRoute exact component={Riders} path="/riders" permit={"admin"} />
-              <ProtectedRoute exact component={Drivers} path="/drivers" permit={"admin,fleetadmin"} />
-              <ProtectedRoute exact component={FleetAdmins} path="/fleetadmins" permit={"admin"} />
-              <ProtectedRoute exact component={DriverEarning} path="/driverearning" permit={"admin,fleetadmin"} />
-              <ProtectedRoute exact component={Notifications} path="/notifications" permit={"admin"} />
-              <ProtectedRoute exact component={Earningreports} path="/earningreports" permit={"admin"} />
-              <ProtectedRoute exact component={AddMoney} path="/addtowallet" permit={"admin"} />
-              <ProtectedRoute exact component={Withdraws} path="/withdraws" permit={"admin"} />
-              <ProtectedRoute exact component={Settings} path="/settings" permit={"admin"} />
+              <ProtectedRoute exact component={BookingHistory} path="/panel/bookings" permit={"rider,admin,driver,fleetadmin"} />
+              <ProtectedRoute exact component={MyProfile} path="/panel/profile" permit={"rider,admin,driver,fleetadmin"} />
+              <ProtectedRoute exact component={Dashboard} path="/panel/dashboard" permit={"admin,fleetadmin"} />
+              <ProtectedRoute exact component={CarTypes} path="/panel/cartypes" permit={"admin"} />
+              <ProtectedRoute exact component={CancellationReasons} path="/panel/cancelreasons" permit={"admin"} />
+              <ProtectedRoute exact component={AddBookings} path="/panel/addbookings" permit={"admin"} />
+              <ProtectedRoute exact component={Promos} path="/panel/promos" permit={"admin"} />
+              <ProtectedRoute exact component={Riders} path="/panel/riders" permit={"admin"} />
+              <ProtectedRoute exact component={Drivers} path="/panel/drivers" permit={"admin,fleetadmin"} />
+              <ProtectedRoute exact component={FleetAdmins} path="/panel/fleetadmins" permit={"admin"} />
+              <ProtectedRoute exact component={DriverEarning} path="/panel/driverearning" permit={"admin,fleetadmin"} />
+              <ProtectedRoute exact component={Notifications} path="/panel/notifications" permit={"admin"} />
+              <ProtectedRoute exact component={Earningreports} path="/panel/earningreports" permit={"admin"} />
+              <ProtectedRoute exact component={AddMoney} path="/panel/addtowallet" permit={"admin"} />
+              <ProtectedRoute exact component={Withdraws} path="/panel/withdraws" permit={"admin"} />
+              <ProtectedRoute exact component={Settings} path="/panel/settings" permit={"admin"} />
               <Route path="/about-us" component={AboutUs} />
               <Route path="/privacy-policy" component={PrivacyPolicy} />
               {features.WebsitePagesEnabled ?

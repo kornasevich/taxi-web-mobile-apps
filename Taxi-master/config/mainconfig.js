@@ -16,7 +16,7 @@ export const MainConfig = {
         appId: "1:941873136458:web:db10c4492d0cb7133f77b3",
         measurementId: "G-RD18V3Y3P1"
     },
-    Google_Map_Key: "AIzaSyAB7AXZhKSt2K-5r2ffRKRjgzg453FyIjs",
+    Google_Map_Key: "AIzaSyD7CMrSoWC5XjMk6Lmc7otwp9Co1WGe56Y",
     facebookAppId: "XXXXXXXXXXXXXXXXX",
     PurchaseDetails: {
         CodeCanyon_Purchase_Code: "",

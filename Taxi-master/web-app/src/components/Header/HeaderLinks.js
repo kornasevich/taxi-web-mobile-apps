@@ -43,7 +43,7 @@ export default function HeaderLinks(props) {
         <Button
           color="transparent"
           className={classes.navLink}
-          onClick={(e) => { e.preventDefault(); history.push('/bookings') }}
+          onClick={(e) => { e.preventDefault(); history.push('/panel/bookings') }}
         >
           {loggedIn?
             <AccountBox className={classes.icons} /> 

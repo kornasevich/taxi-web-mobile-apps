@@ -5,7 +5,7 @@ export function FareCalculator(distance,time,rateDetails){
     }
     let total = baseCalculated > parseFloat(rateDetails.min_fare) ? baseCalculated : parseFloat(rateDetails.min_fare);
     let convenienceFee = 0;
-    if(rateDetails.convenience_fee_type && rateDetails.convenience_fee_type == 'flat'){
+    if(rateDetails.convenience_fee_type && rateDetails.convenience_fee_type === 'flat'){
         convenienceFee = rateDetails.convenience_fees;
     }else{
         convenienceFee = (total*parseFloat(rateDetails.convenience_fees)/100);

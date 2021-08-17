@@ -190,7 +190,7 @@ export default function AddBookings(props) {
       },
       estimate: estimatedata.estimate,
       tripdate: new Date(selectedDate).toString(),
-      bookLater: bookingType === 'Book Later' ? true : false,
+      bookLater: bookingType === 'Book Later',
       settings: settings,
       booking_type_web: true
     };

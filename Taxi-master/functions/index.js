@@ -380,7 +380,9 @@ exports.send_notification = functions.https.onRequest((request, response) => {
 exports.get_route_details = functions.https.onRequest(async (request, response) => {
     response.set("Access-Control-Allow-Origin", "*");
     response.set("Access-Control-Allow-Headers", "Content-Type");
+    console.log(JSON.stringify(request.body))
     let url = `https://maps.googleapis.com/maps/api/directions/json?origin=${request.body.start}&destination=${request.body.dest}&key=${request.body.google_map_key}`;
+    console.log(url)
     let res = await fetch(url);
     let json = await res.json();
     if (json.routes && json.routes.length > 0) {

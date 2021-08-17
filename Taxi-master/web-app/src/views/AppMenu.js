@@ -27,21 +27,20 @@ import assets from 'assets';
 import { FirebaseContext } from 'common';
 
 const menu = [
-  {path: '/', icon: ()=><HomeIcon/>, label: language.home},
-  {path: '/dashboard', icon: ()=><DashboardIcon/>, label: language.dashboard_text},
-  {path: '/bookings', icon: ()=><ListIcon/>, label: language.booking_history},
-  {path: '/addbookings', icon: ()=><ListIcon/>, label: language.addbookinglable},
-  {path: '/riders', icon: ()=><PeopleIcon/>, label: language.riders},
-  {path: '/drivers', icon: ()=><PeopleIcon/>, label: language.drivers},
-  {path: '/cartypes', icon: ()=><CarIcon/>, label: language.car_type},
-  {path: '/cancelreasons', icon: ()=><CarIcon/>, label: language.cancellation_reasons},
-  {path: '/earningreports', icon: ()=><MoneyIcon/>, label: language.earning_reports},
-  {path: '/driverearning', icon: ()=><MoneyIcon/>, label: language.driver_earning},
-  {path: '/addtowallet', icon: ()=><MoneyIcon/>, label: language.add_to_wallet},
-  {path: '/notifications', icon: ()=><NotifyIcon/>, label: language.push_notification_title},
-  {path: '/settings', icon: ()=><LocalAtmIcon/>, label: language.settings_title},
-  {path: '/profile', icon: ()=><PersonOutlineIcon/>, label: language.profile},
-  {path: '/LogOut', icon: ()=><ExitIcon/>, label: language.logout},
+  {path: '/panel/dashboard', icon: ()=><DashboardIcon/>, label: language.dashboard_text},
+  {path: '/panel/bookings', icon: ()=><ListIcon/>, label: language.booking_history},
+  {path: '/panel/addbookings', icon: ()=><ListIcon/>, label: language.addbookinglable},
+  {path: '/panel/riders', icon: ()=><PeopleIcon/>, label: language.riders},
+  {path: '/panel/drivers', icon: ()=><PeopleIcon/>, label: language.drivers},
+  {path: '/panel/cartypes', icon: ()=><CarIcon/>, label: language.car_type},
+  {path: '/panel/cancelreasons', icon: ()=><CarIcon/>, label: language.cancellation_reasons},
+  {path: '/panel/earningreports', icon: ()=><MoneyIcon/>, label: language.earning_reports},
+  {path: '/panel/driverearning', icon: ()=><MoneyIcon/>, label: language.driver_earning},
+  {path: '/panel/addtowallet', icon: ()=><MoneyIcon/>, label: language.add_to_wallet},
+  {path: '/panel/notifications', icon: ()=><NotifyIcon/>, label: language.push_notification_title},
+  {path: '/panel/settings', icon: ()=><LocalAtmIcon/>, label: language.settings_title},
+  {path: '/panel/profile', icon: ()=><PersonOutlineIcon/>, label: language.profile},
+  {path: '/panel/LogOut', icon: ()=><ExitIcon/>, label: language.logout},
 ];
 
 function AppMenu() {
@@ -60,7 +59,7 @@ function AppMenu() {
 
   const _renderMenuList = menu.map((itemMenu)=>{
     return (
-        <MenuItem component={Link} to={itemMenu.label}>
+        <MenuItem component={Link} to={itemMenu.path}>
           <ListItemIcon style={{minWidth: 46}}>
             {itemMenu.icon()}
           </ListItemIcon>
