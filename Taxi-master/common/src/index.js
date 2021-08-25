@@ -164,11 +164,11 @@ const FirebaseProvider  = ({ children }) => {
             tasksRef:() => app.database().ref('bookings').orderByChild('status').equalTo('NEW'),
             singleTaskRef:(uid,bookingId) => app.database().ref("bookings/" + bookingId  + "/requestedDrivers/" + uid),
             bookingListRef:(uid,role) => 
-                role == 'rider'? app.database().ref('bookings').orderByChild('customer').equalTo(uid):
-                    (role == 'driver'? 
+                role === 'rider'? app.database().ref('bookings').orderByChild('customer').equalTo(uid):
+                    (role === 'driver'?
                         app.database().ref('bookings').orderByChild('driver').equalTo(uid)
                         :
-                        (role == 'fleetadmin'? 
+                        (role === 'fleetadmin'?
                             app.database().ref('bookings').orderByChild('fleetadmin').equalTo(uid)
                             : app.database().ref('bookings')
                         )

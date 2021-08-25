@@ -120,7 +120,7 @@ export default function IntroScreen(props) {
             resizeMode="stretch"
             style={styles.imagebg}
         >
-            <View style={styles.topSpace}></View>
+            <View style={styles.topSpace}/>
             <MaterialButtonDark
                 onPress={onPressLoginEmail}
                 style={styles.materialButtonDark}
@@ -133,11 +133,11 @@ export default function IntroScreen(props) {
             :null}
             {(Platform.OS == 'ios' && features.AppleLoginEnabled) || features.FacebookLoginEnabled?
             <View style={styles.seperator}>
-                <View style={styles.lineLeft}></View>
+                <View style={styles.lineLeft}/>
                 <View style={styles.lineLeftFiller}>
                     <Text style={styles.sepText}>{language.spacer_message}</Text>
                 </View>
-                <View style={styles.lineRight}></View>
+                <View style={styles.lineRight}/>
             </View>
             :null}
 
@@ -146,19 +146,19 @@ export default function IntroScreen(props) {
                 {features.FacebookLoginEnabled?
                 <TouchableOpacity style={styles.socialIcon} onPress={FbLogin}>
                     <Image
-                        source={require("../../assets/images/image_fb.png")}
-                        resizeMode="contain"
-                        style={styles.socialIconImage}
-                    ></Image>
+    source={require("../../assets/images/image_fb.png")}
+    resizeMode="contain"
+    style={styles.socialIconImage}
+    />
                 </TouchableOpacity>
                 :null}
                 {Platform.OS == 'ios' && features.AppleLoginEnabled?
                     <TouchableOpacity style={styles.socialIcon} onPress={AppleLogin}>
                         <Image
-                            source={require("../../assets/images/image_apple.png")}
-                            resizeMode="contain"
-                            style={styles.socialIconImage}
-                        ></Image>
+    source={require("../../assets/images/image_apple.png")}
+    resizeMode="contain"
+    style={styles.socialIconImage}
+    />
                     </TouchableOpacity>
                 : null}
             </View>

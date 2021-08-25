@@ -117,7 +117,7 @@ export default function AppCommon({ children }) {
             });
           }
         }
-        if (activeBooking.status == 'ACCEPTED') {
+        if (activeBooking.status === 'ACCEPTED') {
           let diff = api.GetDistance(activeBooking.pickup.lat, activeBooking.pickup.lng, gps.location.lat, gps.location.lng);
           if (diff < 0.02) {
             let bookingData = activeBooking;
@@ -138,13 +138,13 @@ export default function AppCommon({ children }) {
   useEffect(() => {
     if (auth.info
       && auth.info.profile
-      && auth.info.profile.usertype == 'driver'
+      && auth.info.profile.usertype === 'driver'
       && auth.info.profile.driverActiveStatus
       && auth.info.profile.approved
     ) {
       if (!locationOn.current) {
         locationOn.current = true;
-        if(Platform.OS == 'android'){
+        if(Platform.OS === 'android'){
           AsyncStorage.getItem('firstRun', (err, result) => {
             if(result){
               StartBackgroundLocation();
@@ -171,8 +171,8 @@ export default function AppCommon({ children }) {
     }
     if (auth.info
       && auth.info.profile
-      && auth.info.profile.usertype == 'driver'
-      && auth.info.profile.driverActiveStatus == false
+      && auth.info.profile.usertype === 'driver'
+      && auth.info.profile.driverActiveStatus === false
       && auth.info.profile.approved
     ) {
       if (locationOn.current) {
@@ -182,7 +182,7 @@ export default function AppCommon({ children }) {
     }
     if (auth.info
       && auth.info.profile
-      && auth.info.profile.usertype == 'rider'
+      && auth.info.profile.usertype === 'rider'
       && auth.info.profile.approved
     ) {
       if (!locationOn.current) {
@@ -193,7 +193,7 @@ export default function AppCommon({ children }) {
     if (auth.info
       && auth.info.profile
       && auth.info.profile.approved
-      && (auth.info.profile.usertype == 'rider' || auth.info.profile.usertype == 'driver')) {
+      && (auth.info.profile.usertype === 'rider' || auth.info.profile.usertype === 'driver')) {
       if (!tokenFetched.current) {
         tokenFetched.current = true;
         saveToken();
@@ -207,7 +207,7 @@ export default function AppCommon({ children }) {
       api.updatePushToken(
         auth.info,
         token?token:'token_error',
-        Platform.OS == 'ios' ? 'IOS' : 'ANDROID'
+        Platform.OS === 'ios' ? 'IOS' : 'ANDROID'
       )
     );
   };
@@ -277,7 +277,7 @@ export default function AppCommon({ children }) {
       TaskManager.getRegisteredTasksAsync().then((res) => {
         if (res.length > 0) {
           for (let i = 0; i < res.length; i++) {
-            if (res[i].taskName == LOCATION_TASK_NAME) {
+            if (res[i].taskName === LOCATION_TASK_NAME) {
               Location.stopLocationUpdatesAsync(LOCATION_TASK_NAME);
               break;
             }

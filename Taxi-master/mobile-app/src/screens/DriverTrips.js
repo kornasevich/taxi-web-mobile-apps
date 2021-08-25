@@ -84,17 +84,6 @@ export default function DriverTrips(props) {
                 leftComponent={{ icon: 'md-menu', type: 'ionicon', color: colors.WHITE, size: 30, component: TouchableWithoutFeedback, onPress: () => { props.navigation.toggleDrawer(); } }}
                 centerComponent={<Text style={styles.headerTitleStyle}>{language.task_list}</Text>}
                 containerStyle={styles.headerStyle}
-                rightComponent={() => {
-                    return (
-                        <View style={{flexDirection:'row', alignItems:'center'}}>
-                            <Text style={{color:colors.WHITE, fontWeight:'bold', marginRight:3}}>{language.on_duty}</Text>
-                            <Switch
-                                value={auth.info && auth.info.profile ? auth.info.profile.driverActiveStatus : false}
-                                onValueChange={onChangeFunction}
-                            />
-                        </View>
-                    );
-                }}
                 innerContainerStyles={styles.headerInnerStyle}
             />
             <FlatList
@@ -385,6 +374,7 @@ const styles = StyleSheet.create({
     no_driver_style: {
         color: colors.GREY.secondary,
         fontSize: 18,
+        textAlign: 'center'
     },
     addressViewTextStyle: {
         color: colors.GREY.secondary,

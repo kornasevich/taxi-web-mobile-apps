@@ -6,7 +6,7 @@ import { colors } from '../common/theme';
 const SideMenuHeader = ({headerStyle,userPhoto,userName,userEmail}) =>{
    return (
         <View style={[styles.viewStyle,headerStyle]}>
-            <TouchableOpacity style={styles.userImageView} >
+            <TouchableOpacity style={styles.userImageView} activeOpacity={1}>
                  <Image 
                     source={userPhoto == null?require('../../assets/images/profilePic.png'):{uri:userPhoto}}
                     style={styles.imageStyle}

@@ -81,7 +81,7 @@ exports.setup = functions.https.onRequest((request, response) => {
               "extra_info" : "Capacity: 3,Type: Taxi",
               "image" : "https://cdn.pixabay.com/photo/2015/01/17/11/37/taxi-icon-602136__340.png",
               "min_fare" : 10,
-              "name" : "Economy",
+              "name" : "Эконом",
               "rate_per_hour" : 5,
               "rate_per_unit_distance" : 5
             }, {
@@ -91,7 +91,7 @@ exports.setup = functions.https.onRequest((request, response) => {
               "extra_info" : "Capacity: 4, Type: HatchBack",
               "image" : "https://cdn.pixabay.com/photo/2018/05/22/01/37/icon-3420270__340.png",
               "min_fare" : 20,
-              "name" : "Comfort",
+              "name" : "Комфорт",
               "rate_per_hour" : 6,
               "rate_per_unit_distance" : 8
             }, {
@@ -101,7 +101,7 @@ exports.setup = functions.https.onRequest((request, response) => {
               "extra_info" : "Capacity: 4,Type: Sedan",
               "image" : "https://cdn.pixabay.com/photo/2016/04/01/09/11/car-1299198__340.png",
               "min_fare" : 30,
-              "name" : "Exclusive",
+              "name" : "Комфорт+",
               "rate_per_hour" : 8,
               "rate_per_unit_distance" : 10
             } ]
@@ -527,7 +527,7 @@ exports.user_signup = functions.https.onRequest(async (request, response) => {
             email: userDetails.email,
             phoneNumber: userDetails.mobile,
             password: userDetails.password,
-            emailVerified: settings.email_verify ? false : true
+            emailVerified: !settings.email_verify
         });
         if(userRecord && userRecord.uid){
             await admin.database().ref('users/' + userRecord.uid).set(regData);

@@ -47,10 +47,10 @@ export const fetchBookings = (uid, role) => (dispatch) => (firebase) => {
           return data[i];
         });
       for (let i = 0; i < bookings.length; i++) {
-        if (['NEW', 'ACCEPTED', 'ARRIVED', 'STARTED', 'REACHED', 'PENDING', 'PAID'].indexOf(bookings[i].status) != -1) {
+        if (['NEW', 'ACCEPTED', 'ARRIVED', 'STARTED', 'REACHED', 'PENDING', 'PAID'].indexOf(bookings[i].status) !== -1) {
           active.push(bookings[i]);
         }
-        if ((['ACCEPTED', 'ARRIVED', 'STARTED'].indexOf(bookings[i].status) != -1) && role == 'driver') {
+        if ((['ACCEPTED', 'ARRIVED', 'STARTED'].indexOf(bookings[i].status) !== -1) && role === 'driver') {
           tracked = bookings[i];
           fetchBookingLocations(tracked.id)(dispatch)(firebase);
         }
@@ -93,13 +93,13 @@ export const updateBooking = (booking) => (dispatch) => (firebase) => {
     type: UPDATE_BOOKING,
     payload: booking,
   });
-  if (booking.status == 'ARRIVED') {
+  if (booking.status === 'ARRIVED') {
     let dt = new Date();
     booking.driver_arrive_time = dt.getTime().toString();
     singleBookingRef(booking.id).update(booking);
     RequestPushMsg(booking.customer_token, language.notification_title, language.driver_near);
   }
-  if (booking.status == 'STARTED') {
+  if (booking.status === 'STARTED') {
     let dt = new Date();
     let localString = dt.toLocaleTimeString(dateStyle);
     let timeString = dt.getTime();
@@ -119,7 +119,7 @@ export const updateBooking = (booking) => (dispatch) => (firebase) => {
 
     RequestPushMsg(booking.customer_token, language.notification_title, language.driver_journey_msg + booking.id);
   }
-  if (booking.status == 'REACHED') {
+  if (booking.status === 'REACHED') {
     let lastLocation = store.getState().locationdata.coords;
     let settings = store.getState().settingsdata.settings;
 
@@ -133,7 +133,8 @@ export const updateBooking = (booking) => (dispatch) => (firebase) => {
     trackingRef(booking.id).orderByKey().once('value', async (snapshot)=>{  
       const data = snapshot.val();
       let res = await GetTripDistance(data);
-      let distance = settings.convert_to_mile? (res.distance / 1.609344) : res.distance;
+      // let distance = settings.convert_to_mile? (res.distance / 1.609344) : res.distance;
+      let distance = res.distance;
 
       let latlng = lastLocation.lat + ',' + lastLocation.lng;
       fetchAddressfromCoords(latlng).then((address) => {
@@ -170,8 +171,8 @@ export const updateBooking = (booking) => (dispatch) => (firebase) => {
 
         let cars = store.getState().cartypes.cars;
         let rates = {};
-        for (var i = 0; i < cars.length; i++) {
-          if (cars[i].name == booking.carType) {
+        for (let i = 0; i < cars.length; i++) {
+          if (cars[i].name === booking.carType) {
             rates = cars[i];
           }
         }
@@ -195,13 +196,13 @@ export const updateBooking = (booking) => (dispatch) => (firebase) => {
       });
     });
   }
-  if (booking.status == 'PENDING') {
+  if (booking.status === 'PENDING') {
     singleBookingRef(booking.id).update(booking);
     singleUserRef(booking.driver).update({ queue: false });
   }
-  if (booking.status == 'PAID') {
+  if (booking.status === 'PAID') {
     singleBookingRef(booking.id).update(booking);
-    if(booking.driver == auth.currentUser.uid && (booking.payment_mode == 'cash' || booking.payment_mode == 'wallet')){
+    if(booking.driver === auth.currentUser.uid && (booking.payment_mode === 'cash' || booking.payment_mode === 'wallet')){
       singleUserRef(booking.driver).update({ queue: false });
     }
 
@@ -227,7 +228,7 @@ export const updateBooking = (booking) => (dispatch) => (firebase) => {
           amount: booking.cashPaymentAmount,
           date: new Date().toString(),
           txRef: booking.id
-        }
+        };
         walletHistoryRef(booking.driver).push(details);
       }  
     });
@@ -235,7 +236,7 @@ export const updateBooking = (booking) => (dispatch) => (firebase) => {
     RequestPushMsg(booking.customer_token, language.notification_title, language.success_payment);
     RequestPushMsg(booking.driver_token, language.notification_title, language.success_payment);
   }
-  if (booking.status == 'COMPLETE') {
+  if (booking.status === 'COMPLETE') {
     singleBookingRef(booking.id).update(booking);
     if (booking.rating) {
       RequestPushMsg(booking.driver_token, language.notification_title, language.received_rating.toString().replace("X", booking.rating.toString()));

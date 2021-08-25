@@ -7,7 +7,7 @@ export const MainConfig = {
         android_app_version: 100
     },
     FirebaseConfig: {
-        apiKey: "AIzaSyAB7AXZhKSt2K-5r2ffRKRjgzg453FyIjs",
+        apiKey: "AIzaSyD7CMrSoWC5XjMk6Lmc7otwp9Co1WGe56Y",
         authDomain: "taxi135-dd2b3.firebaseapp.com",
         databaseURL: "https://taxi135-dd2b3-default-rtdb.firebaseio.com",
         projectId: "taxi135-dd2b3",

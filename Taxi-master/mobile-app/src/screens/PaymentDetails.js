@@ -116,7 +116,7 @@ export default function PaymentDetails(props) {
 
   const doPayment = (payment_mode) => {
 
-    if (payment_mode == 'cash' || payment_mode == 'wallet') {
+    if (payment_mode === 'cash' || payment_mode === 'wallet') {
         let curBooking = { ...booking };
         curBooking.status = 'PAID';
         curBooking.payment_mode = payment_mode;
@@ -138,7 +138,7 @@ export default function PaymentDetails(props) {
           }
           dispatch(updateWalletBalance(walletBalance,details));
         }
-        if(userdata.usertype == 'rider') {
+        if(userdata.usertype === 'rider') {
           props.navigation.navigate('DriverRating',{booking:booking});
         }else{
           props.navigation.navigate('DriverTrips');
@@ -163,7 +163,7 @@ export default function PaymentDetails(props) {
       curBooking.cardPaymentAmount = payDetails.payableAmmount;
       curBooking.cashPaymentAmount = 0;
       dispatch(updateBooking(curBooking));
-      if(userdata.usertype == 'rider') {
+      if(userdata.usertype === 'rider') {
         props.navigation.navigate("paymentMethod", {
           payData: payData,
           userdata: userdata,
@@ -194,7 +194,7 @@ export default function PaymentDetails(props) {
       Alert.alert(language.alert,language.promo_exp)
     } else {
       let discounttype = item.promo_discount_type.toUpperCase();
-      if (discounttype == 'PERCENTAGE') {
+      if (discounttype === 'PERCENTAGE') {
         let discount = parseFloat(payDetails.amount * item.promo_discount_value / 100).toFixed(2);
         if (discount > item.max_promo_discount_value) {
           let discount = item.max_promo_discount_value;
@@ -250,7 +250,7 @@ export default function PaymentDetails(props) {
         <View style={{ flex: 1, flexDirection: 'column' }}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20, marginBottom: 4 }}>
             <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 22, fontWeight: '500' }}>{language.bill_details}</Text>
-            {userdata && userdata.usertype == 'rider' ? payDetails.promo_applied ?
+            {userdata && userdata.usertype === 'rider' ? payDetails.promo_applied ?
               <TouchableOpacity
                 onPress={() => { removePromo() }}>
                 <Text style={{ color: 'red', textAlign: 'left', lineHeight: 45, fontSize: 14, fontWeight: '500' }}>{language.remove_promo}</Text>
@@ -262,7 +262,7 @@ export default function PaymentDetails(props) {
               </TouchableOpacity>
               : null}
           </View>
-          {userdata && userdata.usertype == 'driver' ?
+          {userdata && userdata.usertype === 'driver' ?
             <View style={{ flex: 1, paddingLeft: 25, paddingRight: 25 }}>
               <View style={styles.location}>
                 {booking && booking.trip_start_time ?
@@ -294,7 +294,7 @@ export default function PaymentDetails(props) {
             </View>
             : null}
 
-          {userdata && userdata.usertype == 'driver' ?
+          {userdata && userdata.usertype === 'driver' ?
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 25, paddingRight: 25 }}>
               <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>{language.distance}</Text>
               <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>
@@ -304,13 +304,13 @@ export default function PaymentDetails(props) {
               </Text>
             </View>
             : null}
-          {userdata && userdata.usertype == 'driver' ?
+          {userdata && userdata.usertype === 'driver' ?
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 25, paddingRight: 25 }}>
               <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>{language.total_time}</Text>
               <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>{(booking && booking.total_trip_time ? parseFloat(booking.total_trip_time / 60).toFixed(1)  : '0') + ' ' + language.mins}</Text>
             </View>
             : null}
-          {userdata && userdata.usertype == 'driver' ?
+          {userdata && userdata.usertype === 'driver' ?
             <View style={{
               borderStyle: 'dotted',
               borderWidth: 0.5,
@@ -321,7 +321,7 @@ export default function PaymentDetails(props) {
             </View>
             : null}
 
-{userdata && userdata.usertype == 'rider' ?
+{userdata && userdata.usertype === 'rider' ?
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 25, paddingRight: 25 }}>
               <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>{language.your_fare}</Text>
               <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>{settings.symbol} {parseFloat(payDetails.amount).toFixed(2)}</Text>
@@ -330,7 +330,7 @@ export default function PaymentDetails(props) {
               <Text style={{ color: 'green', textAlign: 'center', lineHeight: 60, fontSize: 60, fontWeight: 'bold' }}>{settings.symbol} {parseFloat(payDetails.amount).toFixed(2)}</Text>
             </View>
           }
-          {userdata && userdata.usertype == 'rider' ?
+          {userdata && userdata.usertype === 'rider' ?
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 25, paddingRight: 25 }}>
               <Text style={{ color: colors.BLACK, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>{language.promo_discount}</Text>
               <Text style={{ color: colors.DULL_RED, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>- {settings.symbol} {payDetails ? payDetails.discount ? parseFloat(payDetails.discount).toFixed(2) : '0.00' : '0.00'}</Text>
@@ -342,7 +342,7 @@ export default function PaymentDetails(props) {
               <Text style={{ color: colors.DULL_RED, textAlign: 'left', lineHeight: 45, fontSize: 16 }}>- {settings.symbol} {payDetails ? payDetails.usedWalletMoney ? parseFloat(payDetails.usedWalletMoney).toFixed(2) : '0.00' : '0.00'}</Text>
             </View> : null}
 
-          {userdata && userdata.usertype == 'rider' ?
+          {userdata && userdata.usertype === 'rider' ?
             <View style={{ flex: 1 }}>
               <CheckBox
                 center
@@ -355,7 +355,7 @@ export default function PaymentDetails(props) {
 
             </View>
             : null}
-          {userdata && userdata.usertype == 'rider' ?
+          {userdata && userdata.usertype === 'rider' ?
             <View style={{
               borderStyle: 'dotted',
               borderWidth: 0.5,
@@ -363,14 +363,14 @@ export default function PaymentDetails(props) {
             }}>
             </View>
             : null}
-          {userdata && userdata.usertype == 'rider' ?
+          {userdata && userdata.usertype === 'rider' ?
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 25, paddingRight: 25 }}>
               <Text style={{ color: colors.GREEN.bright, textAlign: 'left', lineHeight: 45, fontSize: 18, fontWeight: '500' }}>{language.payable_ammount}</Text>
               <Text style={{ color: colors.GREEN.bright, textAlign: 'left', lineHeight: 45, fontSize: 18, fontWeight: '500' }}>{settings.symbol} {payDetails.payableAmmount ? parseFloat(payDetails.payableAmmount).toFixed(2) : 0.00}</Text>
             </View>
             : null}
         </View>
-        {payDetails.payableAmmount == 0 ?
+        {payDetails.payableAmmount === 0 ?
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.buttonWrapper2}
@@ -397,7 +397,7 @@ export default function PaymentDetails(props) {
                 onPress={() => {
                   doPayment('card');
                 }}>
-                <Text style={styles.buttonTitle}>{userdata && userdata.usertype == 'rider' ? language.payWithCard : language.request_payment}</Text>
+                <Text style={styles.buttonTitle}>{userdata && userdata.usertype === 'rider' ? language.payWithCard : language.request_payment}</Text>
               </TouchableOpacity>
             : null}
           </View>

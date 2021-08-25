@@ -207,7 +207,7 @@ const DrawerRoutes = {
 export const RiderRootNavigator = createDrawerNavigator(
     DrawerRoutes,
     {
-        drawerWidth: 180,
+        drawerWidth: 220,
         initialRouteName: 'Map',
         contentComponent: SideMenu,
     });
@@ -216,7 +216,7 @@ export const RiderRootNavigator = createDrawerNavigator(
 export const DriverRootNavigator = createDrawerNavigator(
     DrawerRoutes,
     {
-        drawerWidth: 180,
+        drawerWidth: 220,
         initialRouteName: 'DriverTrips',
         contentComponent: SideMenu,
     });
@@ -224,7 +224,7 @@ export const DriverRootNavigator = createDrawerNavigator(
 export const AdminRootNavigator = createDrawerNavigator(
     DrawerRoutes,
     {
-        drawerWidth: 180,
+        drawerWidth: 220,
         initialRouteName: 'About',
         contentComponent: SideMenu,
     });

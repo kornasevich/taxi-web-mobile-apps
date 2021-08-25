@@ -27,7 +27,7 @@ export default function DriverIncomeScreen(props) {
             for(let i=0;i<bookings.length;i++){
                 const {tripdate,driver_share} = bookings[i];
                 let tDate = new Date(tripdate);
-                if(driver_share != undefined){
+                if(driver_share !== undefined){
                     if(tDate.getDate() === today.getDate() && tDate.getMonth() === today.getMonth()){
                         tdTrans  = tdTrans + driver_share;
                     }          

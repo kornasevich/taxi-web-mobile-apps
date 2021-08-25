@@ -89,7 +89,7 @@ export default function Registration(props) {
                         setLoader(false);
                     };
                     xhr.responseType = 'blob'; 
-                    xhr.open('GET', Platform.OS=='ios'?data:result.uri, true); 
+                    xhr.open('GET', Platform.OS==='ios'?data:result.uri, true);
                     xhr.send(null); 
                 });
                 if(blob){
@@ -107,7 +107,7 @@ export default function Registration(props) {
     }
 
     const setUserType = (value) => {
-        if(value==0){
+        if(value===0){
             setState({...state, usertype: 'rider' });
         }else{
             setState({...state, usertype: 'driver' });
@@ -127,25 +127,25 @@ export default function Registration(props) {
         let passwordValid = true;
         const regx1 = /^([a-zA-Z0-9@*#]{8,15})$/
         const regx2 = /(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/
-        if (complexity == 'any') {
+        if (complexity === 'any') {
             passwordValid = state.password.length >= 1;
             if (!passwordValid) {
                 Alert.alert(language.alert,language.password_blank_messege);
             }
         }
-        else if (complexity == 'alphanumeric') {
+        else if (complexity === 'alphanumeric') {
             passwordValid = regx1.test(state.password);
             if (!passwordValid) {
                 Alert.alert(language.alert,language.password_alphaNumeric_check);
             }
         }
-        else if (complexity == 'complex') {
+        else if (complexity === 'complex') {
             passwordValid = regx2.test(password);
             if (!passwordValid) {
                 Alert.alert(language.alert,language.password_complexity_check);
             }
         }
-        else if (state.password != confirmpassword){
+        else if (state.password !== confirmpassword){
             passwordValid = false;
             if (!passwordValid) {
                 Alert.alert(language.alert,language.confirm_password_not_match_err);
@@ -163,7 +163,7 @@ export default function Registration(props) {
             if(state.usertype === 'driver' && state.licenseImage == null){
                 Alert.alert(language.alert,language.proper_input_licenseimage);
             }else{
-                if((state.usertype === 'driver' && state.vehicleNumber.length > 1) || state.usertype == 'rider'){
+                if((state.usertype === 'driver' && state.vehicleNumber.length > 1) || state.usertype === 'rider'){
                     if(state.firstName.length>0 && state.lastName.length >0){
                         if(validatePassword('alphanumeric')){
                             if(validateMobile()){
@@ -197,7 +197,7 @@ export default function Registration(props) {
                 <View style={styles.logo}>
                     <Image source={require('../../assets/images/logo165x90white.png')} />
                 </View>
-                <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? "padding" : "padding"} style={styles.form}>
+                <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "padding"} style={styles.form}>
                     <View style={styles.containerStyle}>
                         <Text style={styles.headerStyle}>{language.registration_title}</Text>
                         <View style={styles.textInputContainerStyle}>
@@ -405,7 +405,7 @@ export default function Registration(props) {
                                 }}
                             />
                         </View>
-                        {state.usertype == 'driver' ?
+                        {state.usertype === 'driver' ?
                         <View style={[styles.textInputContainerStyle,{marginTop:10,marginBottom:10}]}>
                             <Icon
                                 name='car'
@@ -432,7 +432,7 @@ export default function Registration(props) {
                                 : null}
                         </View>
                         :null}
-                        {state.usertype == 'driver' ? 
+                        {state.usertype === 'driver' ?
                         <View style={styles.textInputContainerStyle}>
                             <Icon
                                 name='car'
@@ -455,7 +455,7 @@ export default function Registration(props) {
                             />
                         </View>
                         :null}
-                        {state.usertype == 'driver' ? 
+                        {state.usertype === 'driver' ?
                         <View style={styles.textInputContainerStyle}>
                             <Icon
                                 name='car'
@@ -477,7 +477,7 @@ export default function Registration(props) {
                             />
                         </View>
                         :null}
-                        {state.usertype == 'driver' ? 
+                        {state.usertype === 'driver' ?
                         <View style={styles.textInputContainerStyle}>
                             <Icon
                                 name='car'
@@ -499,7 +499,7 @@ export default function Registration(props) {
                             />
                         </View>
                         :null}
-                        {state.usertype == 'driver' ? 
+                        {state.usertype === 'driver' ?
                         <View style={styles.textInputContainerStyle}>
                             <Icon
                                 name='car'
@@ -521,7 +521,7 @@ export default function Registration(props) {
                             />
                         </View>
                         :null}
-                        {state.usertype == 'driver' ? 
+                        {state.usertype === 'driver' ?
                         <View style={styles.textInputContainerStyle}>
                             <Icon
                                 name='numeric'
@@ -543,7 +543,7 @@ export default function Registration(props) {
                             />
                         </View>
                         :null}
-                        {state.usertype == 'driver' ? 
+                        {state.usertype === 'driver' ?
                         <View style={styles.textInputContainerStyle}>
                             <Icon
                                 name='numeric'
@@ -565,7 +565,7 @@ export default function Registration(props) {
                             />
                         </View>
                         :null}
-                        {state.usertype == 'driver' ? 
+                        {state.usertype === 'driver' ?
                         <View style={styles.textInputContainerStyle}>
                             <Icon
                                 name='numeric'
@@ -587,7 +587,7 @@ export default function Registration(props) {
                             />
                         </View>
                         :null}
-                        {state.usertype == 'driver' ?
+                        {state.usertype === 'driver' ?
                             capturedImage?
                                 <View style={styles.imagePosition}>
                                     <TouchableOpacity style={styles.photoClick} onPress={cancelPhoto}>
@@ -688,8 +688,8 @@ const styles = {
         width: 200,
         fontSize: 15,
         height: 40,
-        marginLeft: Platform.OS=='ios'? 20:10,
-        marginTop:Platform.OS=='ios'? 0:10, 
+        marginLeft: Platform.OS==='ios'? 20:10,
+        marginTop:Platform.OS==='ios'? 0:10,
         borderBottomWidth: 1,
         borderBottomColor: colors.WHITE,
     },
